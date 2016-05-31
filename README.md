@@ -1,4 +1,4 @@
-# BrazilianHolidays
+# Brazilian Holidays
 
 Library to provide a list of Brazilian official holidays from an year.
 
