@@ -13,6 +13,5 @@ namespace BrazilianHolidays.Tests {
             var holidays = new Holidays(year);
             Assert.That(holidays.CorpusChristi, Is.EqualTo(DateTime.Parse(expectedDate)));
         }
-        
     }
 }
