@@ -53,6 +53,7 @@
     <Compile Include="CarnivalCalculatorTests.cs" />
     <Compile Include="CorpusChristiCalculatorTests.cs" />
     <Compile Include="EasterCalculatorTests.cs" />
+    <Compile Include="FixedHolidaysTests.cs" />
     <Compile Include="GoodFridayCalculatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
