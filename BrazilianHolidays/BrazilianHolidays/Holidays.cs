@@ -76,5 +76,9 @@ namespace BrazilianHolidays {
 
             return DateTime.Parse($"{year},{month},{day}");
         }
+
+        public void AddCustom(DateTime dateTime) {
+            list.Add(dateTime);
+        }
     }
 }
