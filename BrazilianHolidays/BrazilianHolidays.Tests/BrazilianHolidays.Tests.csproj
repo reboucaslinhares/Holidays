@@ -55,6 +55,7 @@
     <Compile Include="EasterCalculatorTests.cs" />
     <Compile Include="FixedHolidaysTests.cs" />
     <Compile Include="GoodFridayCalculatorTests.cs" />
+    <Compile Include="ListHolidaysTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

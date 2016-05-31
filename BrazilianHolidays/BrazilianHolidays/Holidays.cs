@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BrazilianHolidays {
     public class Holidays {
-        public DateTime Easter { get; }
+        private readonly SortedSet<DateTime> list;
+
         public DateTime NewYearsDay { get; }
-        public DateTime TiradentesDay { get; }
+        public DateTime Easter { get; }
+        public DateTime Tiradentes { get; }
         public DateTime WorkersDay { get; }
         public DateTime IndependenceDay { get; }
         public DateTime PatronessDay { get; }
@@ -18,16 +22,34 @@ namespace BrazilianHolidays {
 
         public DateTime CorpusChristi => Easter.AddDays(60);
 
+        public IList<DateTime> List => list.ToList();
+
+
         public Holidays(int year) {
             Easter = CalculateEasterHolidayFor(year);
             NewYearsDay = new DateTime(year, 1, 1);
-            TiradentesDay = new DateTime(year, 4, 21);
+            Tiradentes = new DateTime(year, 4, 21);
             WorkersDay = new DateTime(year, 5, 1);
             IndependenceDay = new DateTime(year, 9, 7);
             PatronessDay = new DateTime(year, 10, 12);
             AllSoulsDay = new DateTime(year, 11, 2);
             ProclamationOfTheRepublicDay = new DateTime(year, 11, 15);
             ChristmasDay = new DateTime(year, 12, 25);
+
+            list = new SortedSet<DateTime> {
+                NewYearsDay,
+                Carnival,
+                GoodFriday,
+                Easter,
+                Tiradentes,
+                WorkersDay,
+                CorpusChristi,
+                IndependenceDay,
+                PatronessDay,
+                AllSoulsDay,
+                ProclamationOfTheRepublicDay,
+                ChristmasDay
+            };
         }
 
         private DateTime CalculateEasterHolidayFor(int year) {

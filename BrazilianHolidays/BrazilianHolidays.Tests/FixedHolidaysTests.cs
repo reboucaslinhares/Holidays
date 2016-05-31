@@ -21,7 +21,7 @@ namespace BrazilianHolidays.Tests {
         public void TiradentesDayShouldBeAlwaysApril21(int year, string expectedDate) {
             var holidays = new Holidays(year);
 
-            Assert.That(holidays.TiradentesDay, Is.EqualTo(DateTime.Parse(expectedDate)));
+            Assert.That(holidays.Tiradentes, Is.EqualTo(DateTime.Parse(expectedDate)));
         }
 
         [TestCase(2016, "2016/05/01")]
