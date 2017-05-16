@@ -11,20 +11,33 @@ To install the Nuget package, run the following command in the [Package Manager 
 PM> Install-Package BrazilianHolidays
 ```
 
-Or download package directly from [Nuget](https://www.nuget.org/packages/BrazilianHolidays/)
+Or download package directly from [Nuget.org](https://www.nuget.org/packages/BrazilianHolidays/)
 
 ## Usage
 
-Basically, you just create an instance of ```BrazilianHollidays``` class passing the year you want:
+Basically, you just create an instance of ```Hollidays``` class passing the year you want:
 
 ```csharp
 var year = System.DateTime.Today.Year;
-var hollidaysOfYear = new BrazilianHollidays(year);
+var holidaysOfYear = new BrazilianHolidays.Holidays(year);
 ```
 
-The instance has a set of DateTime properties for some of the major holidays, including those that move, such as Carnival and Easter.
+The instance has a set of DateTime properties for some of the major holidays, including those that move, such as Carnival and Easter (using Gauss algorithm).
 
 ```csharp
-var carnivalDateOnYear = hollidays.Carnival;
-var easterDateOnYear = hollidays.Eater;
+var carnivalDateOnYear = holidays.Carnival;
+var easterDateOnYear = holidays.Eater;
+```
+
+You can add your custom dates:
+
+```csharp
+var customHoliday = new System.DateTime(2017, 5, 15);
+holidays.AddCustom(customHoliday);
+```
+
+You can get the the list of dates (computed + custom):
+
+```csharp
+var holidayList = holidays.List;
 ```
