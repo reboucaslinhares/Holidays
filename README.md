@@ -26,7 +26,7 @@ The instance has a set of DateTime properties for some of the major holidays, in
 
 ```csharp
 var carnivalDateOnYear = holidays.Carnival;
-var easterDateOnYear = holidays.Eater;
+var easterDateOnYear = holidays.Easter;
 ```
 
 You can add your custom dates:
