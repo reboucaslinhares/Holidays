@@ -10,7 +10,7 @@ namespace BrazilianHolidays.Tests {
         [TestCase(2025, "2025/06/19")]
         [TestCase(2030, "2030/06/20")]
         public void WhenYearXThenCorpusChristiMustBeY(int year, string expectedDate) {
-            var holidays = new Holidays(year);
+            var holidays = new ChristianHolidays(year);
             Assert.That(holidays.CorpusChristi, Is.EqualTo(DateTime.Parse(expectedDate)));
         }
     }

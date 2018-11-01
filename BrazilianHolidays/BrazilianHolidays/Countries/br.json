@@ -1,0 +1,43 @@
+{
+  "Country": "br", 
+  "IsChristian":  true,
+  "Holidays": {
+    "Items": [
+      {
+        "Description": "Confraternização Universal",
+        "M": 1,
+        "d": 1
+      },
+      {
+        "Description": "Tiradentes",
+        "M": 4,
+        "d": 21
+      },
+      {
+        "Description": "Dia do Trabalhador",
+        "M": 5,
+        "d": 1
+      },
+      {
+        "Description": "Dia da Independência",
+        "M": 9,
+        "d": 7
+      },
+      {
+        "Description": "Dia de Nossa Senhora Aparecida",
+        "M": 10,
+        "d": 12
+      },
+      {
+        "Description": "Dia de Finados",
+        "M": 11,
+        "d": 2
+      },
+      {
+        "Description": "Dia da Proclamação da República",
+        "M": 11,
+        "d": 15
+      }
+    ]
+  }
+}

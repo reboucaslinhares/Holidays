@@ -1,0 +1,54 @@
+{
+  "Country": "pt",
+  "IsChristian": true, 
+  "Holidays": {
+    "Items":
+    [
+      {
+        "Description": "Dia de Ano Novo",
+        "M": 1,
+        "d": 1
+      },
+      {
+        "Description": "Dia da Liberdade",
+        "M": 4,
+        "d": 25
+      },
+      {
+        "Description": "Dia do Trabalhador",
+        "M": 5,
+        "d": 1
+      },
+      {
+        "Description": "Dia de Portugal",
+        "M": 6,
+        "d": 10
+      },
+      {
+        "Description": "Assunção de Maria",
+        "M": 8,
+        "d": 15
+      },
+      {
+        "Description": "Implantação da República",
+        "M": 10,
+        "d": 5
+      },
+      {
+        "Description": "Dia de Todos os Santos",
+        "M": 11,
+        "d": 1
+      },
+      {
+        "Description": "Restauração da Independência",
+        "M": 12,
+        "d": 1
+      },
+      {
+        "Description": "Festa da Imaculada Conceição",
+        "M": 12,
+        "d": 8
+      }
+    ]
+  }
+}

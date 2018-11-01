@@ -1,84 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace BrazilianHolidays {
     public class Holidays {
-        private readonly SortedSet<DateTime> list;
+        [JsonProperty("Items")]
+        private SortedSet<Holiday> items;
+        public IReadOnlyList<Holiday> List => items.ToList().AsReadOnly();
 
-        public DateTime NewYearsDay { get; }
-        public DateTime Easter { get; }
-        public DateTime Tiradentes { get; }
-        public DateTime WorkersDay { get; }
-        public DateTime IndependenceDay { get; }
-        public DateTime PatronessDay { get; }
-        public DateTime AllSoulsDay { get; }
-        public DateTime ProclamationOfTheRepublicDay { get; }
-        public DateTime ChristmasDay { get; }
-
-        public DateTime Carnival => Easter.AddDays(-47);
-
-        public DateTime GoodFriday => Easter.AddDays(-2);
-
-        public DateTime CorpusChristi => Easter.AddDays(60);
-
-        public IList<DateTime> List => list.ToList();
-
-
-        public Holidays(int year) {
-            Easter = CalculateEasterHolidayFor(year);
-            NewYearsDay = new DateTime(year, 1, 1);
-            Tiradentes = new DateTime(year, 4, 21);
-            WorkersDay = new DateTime(year, 5, 1);
-            IndependenceDay = new DateTime(year, 9, 7);
-            PatronessDay = new DateTime(year, 10, 12);
-            AllSoulsDay = new DateTime(year, 11, 2);
-            ProclamationOfTheRepublicDay = new DateTime(year, 11, 15);
-            ChristmasDay = new DateTime(year, 12, 25);
-
-            list = new SortedSet<DateTime> {
-                NewYearsDay,
-                Carnival,
-                GoodFriday,
-                Easter,
-                Tiradentes,
-                WorkersDay,
-                CorpusChristi,
-                IndependenceDay,
-                PatronessDay,
-                AllSoulsDay,
-                ProclamationOfTheRepublicDay,
-                ChristmasDay
-            };
+        public void AddCustom(string description, DateTime date)
+        {
+            items.Add(new Holiday{Description = description, Month = date.Month, Day = date.Day, Type = HolidayType.Custom});
         }
 
-        private DateTime CalculateEasterHolidayFor(int year) {
-            const int x = 24;
-            const int y = 5;
+        public void Add(params Holiday[] holidays)
+        {
+            foreach (var holiday in holidays.Where(h => h != null)) {
+                if (holiday.Month <= 0 || holiday.Day <= 0)
+                    throw new ArgumentException("Holiday's day and month must be valid");
 
-            var a = year % 19;
-            var b = year % 4;
-            var c = year % 7;
-
-            var d = (19 * a + x) % 30;
-            var e = (2 * b + 4 * c + 6 * d + y) % 7;
-
-            int day;
-            int month;
-
-            if (d + e > 9) {
-                day = d + e - 9;
-                month = 4;
-            } else {
-                day = d + e + 22;
-                month = 3;
+                items.Add(holiday);
             }
-
-            return DateTime.Parse($"{year},{month},{day}");
         }
 
-        public void AddCustom(DateTime dateTime) {
-            list.Add(dateTime);
+        public Holiday Get(byte month, byte day, HolidayType type) {
+            return List.Single(holiday => holiday.Month == month && holiday.Day == day && holiday.Type == type);
+        }
+
+        public Holidays() {
+            items = new SortedSet<Holiday>();
         }
     }
 }

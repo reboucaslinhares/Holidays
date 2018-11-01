@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace BrazilianHolidays.Tests {
@@ -10,9 +11,11 @@ namespace BrazilianHolidays.Tests {
         [TestCase(2025, "2025/03/04")]
         [TestCase(2030, "2030/03/05")]
         public void WhenYearXThenCarnivalMustBeY(int year, string expectedDate) {
-            var holidays = new Holidays(year);
+            var holidays = new ChristianHolidays(year);
             Assert.That(holidays.Carnival, Is.EqualTo(DateTime.Parse(expectedDate)));
         }
+
+        
         
     }
 }
