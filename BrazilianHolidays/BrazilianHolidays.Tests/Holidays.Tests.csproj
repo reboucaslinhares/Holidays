@@ -84,9 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrazilianHolidays\BrazilianHolidays.csproj">
+    <ProjectReference Include="..\BrazilianHolidays\Holidays.csproj">
       <Project>{7d65533a-d544-4c24-acd1-2e287e9b1d18}</Project>
-      <Name>BrazilianHolidays</Name>
+      <Name>Holidays</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
