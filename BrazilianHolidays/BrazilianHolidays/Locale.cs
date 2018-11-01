@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using BrazilianHolidays.Properties;
+using Holidays.Properties;
 using Newtonsoft.Json.Linq;
 
-namespace BrazilianHolidays {
+namespace Holidays {
     public class Locale {
         private JObject json;
         public string GetLocalizedStringFor(string key) {

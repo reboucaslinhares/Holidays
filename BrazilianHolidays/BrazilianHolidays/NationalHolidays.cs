@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BrazilianHolidays.Properties;
+using Holidays.Properties;
 using Newtonsoft.Json;
 
-namespace BrazilianHolidays {
+namespace Holidays {
     public class NationalHolidays {
         private Holidays holidays;
 

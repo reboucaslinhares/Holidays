@@ -1,8 +1,7 @@
 using System;
-using System.Linq;
 using NUnit.Framework;
 
-namespace BrazilianHolidays.Tests {
+namespace Holidays.Tests {
     [TestFixture]
     public class CarnivalCalculatorTests {
 

@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
-namespace BrazilianHolidays {
+namespace Holidays {
     public class Holidays {
         [JsonProperty("Items")]
         private SortedSet<Holiday> items;

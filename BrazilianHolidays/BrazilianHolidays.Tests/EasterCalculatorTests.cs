@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace BrazilianHolidays.Tests {
+namespace Holidays.Tests {
     [TestFixture]
     public class EasterCalculatorTests {
         [TestCase(2016, "2016/03/27")]
