@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <RootNamespace>Holidays.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Countries\br.json" />
+    <None Remove="Countries\pt.json" />
+    <None Remove="Locale\ChristianHolidays-br.json" />
+    <None Remove="Locale\ChristianHolidays-pt.json" />
+    <None Remove="Locale\ChristianHolidays.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Countries\br.json" />
+    <EmbeddedResource Include="Countries\pt.json" />
+    <EmbeddedResource Include="Locale\ChristianHolidays-br.json" />
+    <EmbeddedResource Include="Locale\ChristianHolidays.json" />
+    <EmbeddedResource Include="Locale\ChristianHolidays-pt.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+</Project>

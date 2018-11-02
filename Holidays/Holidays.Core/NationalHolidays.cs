@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
-using Holidays.Properties;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace Holidays {
+namespace Holidays.Core {
     public class NationalHolidays {
         [JsonProperty("Holidays")]
         private Holidays holidays;
@@ -42,20 +44,25 @@ namespace Holidays {
         }
 
         public static NationalHolidays From(string country) {
-            var countryNationalHolidaysBlob = (byte[])Resources.ResourceManager.GetObject(country);
-    
-            var countryNationalHolidays = Encoding.Default.GetString(countryNationalHolidaysBlob);
-            var nationalHolidays = JsonConvert.DeserializeObject<NationalHolidays>(countryNationalHolidays);
-            if (nationalHolidays == null)
-                return new NationalHolidays();
+            var type = typeof(ChristianHolidays);
+            var assembly = Assembly.Load(new AssemblyName(type.Namespace));
+            var localizableTypeManifestStream = assembly.GetManifestResourceStream($"{type.Namespace}.Countries.{country}.json");
 
-            foreach (var nationalHoliday in nationalHolidays.Holidays) {
-                nationalHoliday.Type = HolidayType.National;
-            }
+            using (var jsonContentReader = new StreamReader(localizableTypeManifestStream, Encoding.UTF7))
+            {
 
-            return nationalHolidays;
-        
-        
+                var nationalHolidays = JsonConvert.DeserializeObject<NationalHolidays>(jsonContentReader.ReadToEnd());
+                if (nationalHolidays == null)
+                    return new NationalHolidays();
+
+                foreach (var nationalHoliday in nationalHolidays.Holidays)
+                {
+                    nationalHoliday.Type = HolidayType.National;
+                }
+
+                return nationalHolidays;
+
+            }           
         }
     }
 }

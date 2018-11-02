@@ -1,8 +1,9 @@
 ﻿using System;
 using Holidays;
+using Holidays.Core;
 using NUnit.Framework;
 
-namespace HolidaysTests {
+namespace HolidaysCoreTests {
     [TestFixture]
     public class FixedHolidaysTests {
         [TestCase(2016, "2016/01/01")]

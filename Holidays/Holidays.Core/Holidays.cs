@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Holidays {
+namespace Holidays.Core {
     [JsonArray(false)]
     public class Holidays : ICollection<Holiday> {
         

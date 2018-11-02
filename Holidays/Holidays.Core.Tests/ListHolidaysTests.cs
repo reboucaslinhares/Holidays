@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using Holidays;
+using Holidays.Core;
 using NUnit.Framework;
 
-namespace HolidaysTests {
+namespace HolidaysCoreTests {
     [TestFixture]
     public class ListHolidaysTests {
         [Test]
