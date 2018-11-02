@@ -1,5 +1,5 @@
 ﻿using System;
-using Holidays;
+using Holidays.Moveable;
 using NUnit.Framework;
 
 namespace HolidaysTests {

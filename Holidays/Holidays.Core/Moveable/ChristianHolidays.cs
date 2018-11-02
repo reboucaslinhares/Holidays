@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace Holidays {
-    public class ChristianHolidays {
+namespace Holidays.Moveable {
+    public class ChristianHolidays : IMoveableHolidays {
         private Holidays holidays;
         private Locale locale;
 
@@ -24,7 +24,7 @@ namespace Holidays {
         public ChristianHolidays() {
         }
 
-        public ChristianHolidays CalculateForYear(int year) {
+        public IMoveableHolidays CalculateForYear(int year) {
             Easter = CalculateEasterHolidayFor(year);
 
             var easter = new Holiday {
@@ -91,7 +91,7 @@ namespace Holidays {
             return DateTime.Parse($"{year},{month},{day}");
         }
 
-        public ChristianHolidays UseLocalizationFor(string country) {
+        public IMoveableHolidays UseLocalizationFor(string country) {
             locale = new Locale(GetType(), country);
             return this;
         }

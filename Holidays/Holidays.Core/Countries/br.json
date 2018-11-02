@@ -1,6 +1,6 @@
 {
-  "Country": "br", 
-  "IsChristian":  true,
+  "Country": "br",
+  "MoveableHolidays": [ "Holidays.Moveable.ChristianHolidays" ],
   "Holidays": [
       {
         "Description": "Confraternização Universal",

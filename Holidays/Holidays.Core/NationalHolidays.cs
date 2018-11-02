@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Holidays.Moveable;
 using Newtonsoft.Json;
 
 namespace Holidays {
@@ -18,20 +19,23 @@ namespace Holidays {
 
         public string Country { get; set; }
 
-        public bool IsChristian { get; set; }
+        public IEnumerable<string> MoveableHolidays { get; set; }
         
         public IDictionary<string, DateTime> OfYear(int year) {
             var holidaysOfYear = new Holidays();
 
-            if (IsChristian)
-            {
-                var christianHolidays = new ChristianHolidays()
-                    .UseLocalizationFor(Country)
-                    .CalculateForYear(year)
-                    .Holidays;
+            foreach (var moveableHolidaysStrategyDescription in MoveableHolidays) {
+                var moveableHolidaysStrategyInstance = Activator.CreateInstance(Type.GetType(moveableHolidaysStrategyDescription)) as IMoveableHolidays;
+                var moveableHolidays = moveableHolidaysStrategyInstance?
+                                            .UseLocalizationFor(Country)
+                                            .CalculateForYear(year)
+                                            .Holidays;
+                if(moveableHolidays == null || moveableHolidays.Count == 0)
+                    continue;
 
-                foreach (var christianHoliday in christianHolidays) {
-                    holidaysOfYear.Add(christianHoliday);
+                foreach (var moveableHoliday in moveableHolidays)
+                {
+                    holidaysOfYear.Add(moveableHoliday);
                 }
             }
 
@@ -43,9 +47,10 @@ namespace Holidays {
         }
 
         public static NationalHolidays From(string country) {
-            var type = typeof(ChristianHolidays);
-            var assembly = Assembly.Load(new AssemblyName(type.Namespace));
-            var localizableTypeManifestStream = assembly.GetManifestResourceStream($"{type.Namespace}.Countries.{country}.json");
+
+#if NET45
+            var assembly = typeof(NationalHolidays).GetTypeInfo().Assembly;
+            var localizableTypeManifestStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Countries.{country}.json");
 
             using (var jsonContentReader = new StreamReader(localizableTypeManifestStream, Encoding.UTF7))
             {
@@ -61,7 +66,27 @@ namespace Holidays {
 
                 return nationalHolidays;
 
-            }           
+            }
+#else
+            var assembly = typeof(NationalHolidays).Assembly;
+            var localizableTypeManifestStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Countries.{country}.json");
+
+            using (var jsonContentReader = new StreamReader(localizableTypeManifestStream, Encoding.UTF7))
+            {
+
+                var nationalHolidays = JsonConvert.DeserializeObject<NationalHolidays>(jsonContentReader.ReadToEnd());
+                if (nationalHolidays == null)
+                    return new NationalHolidays();
+
+                foreach (var nationalHoliday in nationalHolidays.Holidays)
+                {
+                    nationalHoliday.Type = HolidayType.National;
+                }
+
+                return nationalHolidays;
+
+            }
+#endif
         }
     }
 }

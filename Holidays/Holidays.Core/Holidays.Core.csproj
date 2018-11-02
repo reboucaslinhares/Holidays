@@ -1,14 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net45;net40</TargetFrameworks>
     <RootNamespace>Holidays</RootNamespace>
     <AssemblyName>Holidays</AssemblyName>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>Thiago Rebouças Linhares</Authors>
-    <Copyright></Copyright>
-    <RepositoryType />
+    <Copyright>Thiago Rebouças Linhares, Holidays, 2018</Copyright>
+    <RepositoryType>Github</RepositoryType>
     <PackageTags>holidays</PackageTags>
+    <Version>1.0.1-preview1</Version>
+    <Company>Holidays</Company>
+    <Description>.Net utilility library to list national holidays and compute some moveable for several cultures and nations. These classes could be useful for several kind of .Net projects.</Description>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/reboucaslinhares/Holidays</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/reboucaslinhares/Holidays</RepositoryUrl>
+    <PackageReleaseNotes>Added support for .Net Core 2.0 (under construction)</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
