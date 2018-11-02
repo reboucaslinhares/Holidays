@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
-    <RootNamespace>Holidays.Core</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Holidays</RootNamespace>
+    <AssemblyName>Holidays</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

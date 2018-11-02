@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Holidays.Core {
+namespace Holidays {
     public class Holiday : IComparable<Holiday> {
         public string Description { get; set; }
         [JsonProperty("M")]

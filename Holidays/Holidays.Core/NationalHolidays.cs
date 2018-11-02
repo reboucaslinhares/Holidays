@@ -5,9 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace Holidays.Core {
+namespace Holidays {
     public class NationalHolidays {
         [JsonProperty("Holidays")]
         private Holidays holidays;

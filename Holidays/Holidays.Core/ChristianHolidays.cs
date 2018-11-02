@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Holidays.Core {
+namespace Holidays {
     public class ChristianHolidays {
         private Holidays holidays;
         private Locale locale;

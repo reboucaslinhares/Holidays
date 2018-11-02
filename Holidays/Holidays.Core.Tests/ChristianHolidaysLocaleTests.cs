@@ -1,7 +1,7 @@
-using Holidays.Core;
+using Holidays;
 using NUnit.Framework;
 
-namespace HolidaysCoreTests {
+namespace HolidaysTests {
     [TestFixture]
     public class ChristianHolidaysLocaleTests
     {

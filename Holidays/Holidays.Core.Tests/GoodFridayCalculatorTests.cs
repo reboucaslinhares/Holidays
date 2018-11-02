@@ -1,9 +1,8 @@
 using System;
 using Holidays;
-using Holidays.Core;
 using NUnit.Framework;
 
-namespace HolidaysCoreTests {
+namespace HolidaysTests {
     [TestFixture]
     public class GoodFridayCalculatorTests {
 

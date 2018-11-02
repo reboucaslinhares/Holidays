@@ -2,12 +2,12 @@
 using System.Linq;
 using NUnit.Framework;
 
-namespace HolidaysCoreTests {
+namespace HolidaysTests {
     [TestFixture]
     public class AddingCustomHolidaysTests {
         [Test]
         public void WhenAddACustomHolidayListShouldBeIncreased() {
-            var holidays = new global::Holidays.Core.Holidays();
+            var holidays = new global::Holidays.Holidays();
 
             holidays.AddCustom("description", new DateTime(DateTime.Today.Year, 9, 6));
 
@@ -16,7 +16,7 @@ namespace HolidaysCoreTests {
 
         [Test]
         public void WhenCustomHolidayAlreadyIsOnTheListShouldNotBeAdded() {
-            var holidays = new global::Holidays.Core.Holidays();
+            var holidays = new global::Holidays.Holidays();
 
             var description = "description";
             var dateTime = new DateTime(DateTime.Today.Year, 1, 1);
@@ -29,7 +29,7 @@ namespace HolidaysCoreTests {
 
         [Test]
         public void WhenAddACustomHolidayListShouldBeKeepOrdered() {
-            var holidays = new global::Holidays.Core.Holidays();
+            var holidays = new global::Holidays.Holidays();
 
             holidays.AddCustom("description1", new DateTime(DateTime.Today.Year, 2, 6));
             holidays.AddCustom("description2", new DateTime(DateTime.Today.Year, 9, 6));

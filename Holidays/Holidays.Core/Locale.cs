@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using Newtonsoft.Json.Linq;
 
-namespace Holidays.Core {
+namespace Holidays {
     public class Locale {
         private JObject json;
 

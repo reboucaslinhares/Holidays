@@ -5,7 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>HolidaysCoreTests</RootNamespace>
+    <RootNamespace>HolidaysTests</RootNamespace>
+
+    <AssemblyName>Holidays.Tests</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
