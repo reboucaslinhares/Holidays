@@ -4,6 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Holidays</RootNamespace>
     <AssemblyName>Holidays</AssemblyName>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>Thiago Rebouças Linhares</Authors>
+    <Copyright></Copyright>
+    <RepositoryType />
+    <PackageTags>holidays</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
