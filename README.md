@@ -58,11 +58,14 @@ Note that is not necessary inform the year. The return is a collection of ```Hol
 You can add your custom dates:
 
 ```csharp
-var customHoliday = new System.DateTime(System.DateTime.Today.Year, 5, 15);
-holidays.AddCustom("some holiday", customHoliday);
+var customHolidayDate = new System.DateTime(System.DateTime.Today.Year, 5, 15);
+holidays.AddCustom("some holiday", customHolidayDate);
 // or
-holidays.Add(new Holiday{ Description = "some holiday", Day = 1, Month = 2, Type = HolidayType.Local });
+var customHoliday = new Holiday{ Description = "some holiday", Day = 1, Month = 2, Type = HolidayType.Local };
+holidays.Add(customHoliday);
 // or
-holidays.Add(new Holiday{ Description = "some holiday 1", Day = 1, Month = 2, Type = HolidayType.Local }, new Holiday { Description = "some holiday 2", Day = 2, Month = 3, Type = HolidayType.Local });
+holidays.AddRange(
+   new Holiday{ Description = "some holiday 1", Day = 1, Month = 2, Type = HolidayType.Local }, 
+   new Holiday { Description = "some holiday 2", Day = 2, Month = 3, Type = HolidayType.Local });
 ```
 
