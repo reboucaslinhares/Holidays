@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Holidays.Moveable;
 using Newtonsoft.Json;
 
 namespace Holidays {
@@ -13,16 +12,14 @@ namespace Holidays {
         private Holidays holidays;
 
         [JsonIgnore]
-        public Holidays Holidays {
-            get => holidays ?? (holidays = new Holidays());
-        }
+        public Holidays FixedHolidays => holidays ?? (holidays = new Holidays());
 
         public string Country { get; set; }
 
         public IEnumerable<string> MoveableHolidays { get; set; }
         
         public IDictionary<string, DateTime> OfYear(int year) {
-            var holidaysOfYear = new Holidays();
+            var allHolidays = new Holidays();
 
             foreach (var moveableHolidaysStrategyDescription in MoveableHolidays) {
                 var moveableHolidaysStrategyInstance = Activator.CreateInstance(Type.GetType(moveableHolidaysStrategyDescription)) as IMoveableHolidays;
@@ -35,15 +32,15 @@ namespace Holidays {
 
                 foreach (var moveableHoliday in moveableHolidays)
                 {
-                    holidaysOfYear.Add(moveableHoliday);
+                    allHolidays.Add(moveableHoliday);
                 }
             }
 
-            foreach (var nationalHoliday in Holidays) {
-                holidaysOfYear.Add(nationalHoliday);
+            foreach (var fixedHoliday in FixedHolidays) {
+                allHolidays.Add(fixedHoliday);
             }
 
-            return holidaysOfYear.ToDictionary(item => item.Description, item => item.ToDateOf(year));
+            return allHolidays.ToDictionary(item => item.Description, item => item.ToDateOf(year));
         }
 
         public static NationalHolidays From(string country) {
@@ -59,7 +56,7 @@ namespace Holidays {
                 if (nationalHolidays == null)
                     return new NationalHolidays();
 
-                foreach (var nationalHoliday in nationalHolidays.Holidays)
+                foreach (var nationalHoliday in nationalHolidays.FixedHolidays)
                 {
                     nationalHoliday.Type = HolidayType.National;
                 }
@@ -78,7 +75,7 @@ namespace Holidays {
                 if (nationalHolidays == null)
                     return new NationalHolidays();
 
-                foreach (var nationalHoliday in nationalHolidays.Holidays)
+                foreach (var nationalHoliday in nationalHolidays.FixedHolidays)
                 {
                     nationalHoliday.Type = HolidayType.National;
                 }
@@ -88,5 +85,10 @@ namespace Holidays {
             }
 #endif
         }
+
+        public static NationalHolidays FromBrazil => From("br");
+        
+        public static NationalHolidays FromPortugal => From("pt");
+        
     }
 }

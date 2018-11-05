@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Holidays.Core", "Holidays.Core\Holidays.Core.csproj", "{31DDC661-AC6A-45F1-990C-04D00BE9F779}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Holidays", "Holidays.Core\Holidays.csproj", "{31DDC661-AC6A-45F1-990C-04D00BE9F779}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Holidays.Core.Tests", "Holidays.Core.Tests\Holidays.Core.Tests.csproj", "{5D1BB82A-BF1F-4EE6-BB5B-77A76C34EA75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Holidays.Tests", "Holidays.Core.Tests\Holidays.Tests.csproj", "{5D1BB82A-BF1F-4EE6-BB5B-77A76C34EA75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

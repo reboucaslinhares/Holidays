@@ -92,7 +92,7 @@ namespace Holidays.Moveable {
         }
 
         public IMoveableHolidays UseLocalizationFor(string country) {
-            locale = new Locale(GetType(), country);
+            locale = Locale.LoadEmbeddedFor(GetType(), country);
             return this;
         }
     }

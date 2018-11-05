@@ -20,7 +20,7 @@ namespace HolidaysTests {
         [TestCase(2025, "2025/04/21")]
         [TestCase(2030, "2030/04/21")]
         public void TiradentesDayShouldBeAlwaysApril21(int year, string expectedDate) {
-            var holidays = NationalHolidays.From("br").OfYear(year);
+            var holidays = NationalHolidays.FromBrazil.OfYear(year);
 
             Assert.That(holidays["Tiradentes"], Is.EqualTo(DateTime.Parse(expectedDate)));
         }
@@ -30,7 +30,7 @@ namespace HolidaysTests {
         [TestCase(2025, "2025/05/01")]
         [TestCase(2030, "2030/05/01")]
         public void WorkersDayShouldBeAlwaysMayFirst(int year, string expectedDate) {
-            var holidays = NationalHolidays.From("br").OfYear(year);
+            var holidays = NationalHolidays.FromPortugal.OfYear(year);
 
             Assert.That(holidays["Dia do Trabalhador"], Is.EqualTo(DateTime.Parse(expectedDate)));
         }

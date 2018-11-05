@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net45;net40</TargetFrameworks>
+    <RootNamespace>Holidays</RootNamespace>
+    <AssemblyName>Holidays</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Thiago Rebouças Linhares, Thiago Silva</Authors>
+    <Copyright>Thiago Rebouças Linhares, Holidays, 2018</Copyright>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>holidays</PackageTags>
+    <Version>1.0.1</Version>
+    <Company>Holidays</Company>
+    <Description>Get holidays for any year between 1901 and 2099. Also you can add custom holidays and manage with those dates as you wish.</Description>
+    <PackageLicenseUrl>https://github.com/reboucaslinhares/Holidays/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/reboucaslinhares/Holidays</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/reboucaslinhares/Holidays</RepositoryUrl>
+    <PackageReleaseNotes>Added support for .Net Core 2.0 (under construction)</PackageReleaseNotes>
+    <PackageId>Holidays</PackageId>
+    <Product>Holidays</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Countries\br.json" />
+    <None Remove="Countries\pt.json" />
+    <None Remove="Locale\ChristianHolidays-br.json" />
+    <None Remove="Locale\ChristianHolidays-pt.json" />
+    <None Remove="Locale\ChristianHolidays.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Countries\br.json" />
+    <EmbeddedResource Include="Countries\pt.json" />
+    <EmbeddedResource Include="Locale\ChristianHolidays-br.json" />
+    <EmbeddedResource Include="Locale\ChristianHolidays.json" />
+    <EmbeddedResource Include="Locale\ChristianHolidays-pt.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+</Project>

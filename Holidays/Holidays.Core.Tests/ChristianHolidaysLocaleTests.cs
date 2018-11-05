@@ -13,7 +13,7 @@ namespace HolidaysTests {
         [TestCase("br", "Easter", "Páscoa")]
         public void WhenLocaleIsBrThenDescriptionsMustBeAsExpected(string country, string inputText, string expectedText)
         {
-            var locale = new Locale(typeof(ChristianHolidays), country);
+            var locale = Locale.LoadEmbeddedFor(typeof(ChristianHolidays), country);
 
             Assert.That(locale.GetLocalizedStringFor(inputText), Is.EqualTo(expectedText));
         }
@@ -25,7 +25,7 @@ namespace HolidaysTests {
         [TestCase("pt", "Easter", "Páscoa")]
         public void WhenLocaleIsPtThenDescriptionsMustBeAsExpected(string country, string inputText, string expectedText)
         {
-            var locale = new Locale(typeof(ChristianHolidays), country);
+            var locale = Locale.LoadEmbeddedFor(typeof(ChristianHolidays), country);
             Assert.That(locale.GetLocalizedStringFor(inputText), Is.EqualTo(expectedText));
         }
     }

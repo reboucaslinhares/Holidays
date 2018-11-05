@@ -1,41 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;net40</TargetFrameworks>
-    <RootNamespace>Holidays</RootNamespace>
-    <AssemblyName>Holidays</AssemblyName>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>Thiago Rebouças Linhares</Authors>
-    <Copyright>Thiago Rebouças Linhares, Holidays, 2018</Copyright>
-    <RepositoryType>Github</RepositoryType>
-    <PackageTags>holidays</PackageTags>
-    <Version>1.0.1-preview1</Version>
-    <Company>Holidays</Company>
-    <Description>.Net utilility library to list national holidays and compute some moveable for several cultures and nations. These classes could be useful for several kind of .Net projects.</Description>
-    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/reboucaslinhares/Holidays</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/reboucaslinhares/Holidays</RepositoryUrl>
-    <PackageReleaseNotes>Added support for .Net Core 2.0 (under construction)</PackageReleaseNotes>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Countries\br.json" />
-    <None Remove="Countries\pt.json" />
-    <None Remove="Locale\ChristianHolidays-br.json" />
-    <None Remove="Locale\ChristianHolidays-pt.json" />
-    <None Remove="Locale\ChristianHolidays.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Countries\br.json" />
-    <EmbeddedResource Include="Countries\pt.json" />
-    <EmbeddedResource Include="Locale\ChristianHolidays-br.json" />
-    <EmbeddedResource Include="Locale\ChristianHolidays.json" />
-    <EmbeddedResource Include="Locale\ChristianHolidays-pt.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-  </ItemGroup>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
 </Project>

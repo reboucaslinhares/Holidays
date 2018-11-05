@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using System.Text;
 using Newtonsoft.Json.Linq;
 
@@ -12,25 +11,30 @@ namespace Holidays {
             return json?.GetValue(key)?.Value<string>() ?? key;
         }
 
-        public Locale(Type type, string country) {
-            var assembly = Assembly.Load(new AssemblyName(GetType().Namespace));
-            var localizableTypeManifestStream = assembly.GetManifestResourceStream($"{GetType().FullName}.{type.Name}-{country}.json");
+        public Locale(JObject json) {
+            this.json = json;
+        }
 
-            if (localizableTypeManifestStream == null) {
-                localizableTypeManifestStream = assembly.GetManifestResourceStream($"{GetType().FullName}.{type.Name}.json");
-                if (localizableTypeManifestStream == null) {
-                    json = new JObject();
-                    return;
+        public static Locale LoadEmbeddedFor(Type type, string country) {
+            var assembly = type.Assembly;
+            var localizableTypeManifestStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{typeof(Locale).Name}.{type.Name}-{country}.json");
+
+            if (localizableTypeManifestStream == null)
+            {
+                localizableTypeManifestStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{typeof(Locale).Name}.{type.Name}.json");
+                if (localizableTypeManifestStream == null)
+                {
+                    var json = new JObject();
+                    return new Locale(json);
                 }
             }
 
-            using (var jsonContentReader = new StreamReader(localizableTypeManifestStream, Encoding.UTF7)) {
-
-                json = JObject.Parse(jsonContentReader.ReadToEnd());
-
-            }
-
-            localizableTypeManifestStream.Dispose();
+            using (var jsonContentReader = new StreamReader(localizableTypeManifestStream, Encoding.UTF7))
+            {
+                var json = JObject.Parse(jsonContentReader.ReadToEnd());
+                localizableTypeManifestStream.Dispose();
+                return new Locale(json);
+            }            
 
         }
     }
