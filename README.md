@@ -32,9 +32,9 @@ var brazilianHolidaysOfYear = NationalHolidays.FromBrazil.OfYear(year);
 // or
 brazilianHolidaysOfYear = NationalHolidays.From("br").OfYear(year);
 
-var protugueseHolidaysOfYear = NationalHolidays.FromPortugal.OfYear(year);
+var portugueseHolidaysOfYear = NationalHolidays.FromPortugal.OfYear(year);
 // or
-protugueseHolidaysOfYear = NationalHolidays.From("pt").OfYear(year);
+portugueseHolidaysOfYear = NationalHolidays.From("pt").OfYear(year);
 ```
 
 The result is a ```Dictionary<string, DateTime>``` that represents the holiday description and its repective date on those year.
