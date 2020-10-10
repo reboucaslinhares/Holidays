@@ -43,6 +43,33 @@ namespace Holidays {
             return allHolidays.ToDictionary(item => item.Description, item => item.ToDateOf(year));
         }
 
+
+        /// <summary>
+        /// Try get a holiday to dateTime parameter
+        /// </summary>
+        /// <param name="dateTime">DateTime to try get a holiday</param>
+        /// <returns>It return a holiday to datetime parameter, if it dont find a holiday, return a DateTime.MinValue on value dictionary </returns>
+        public KeyValuePair<string, DateTime> OfDateTime(DateTime dateTime)
+        {
+            return OfYear(dateTime.Year).FirstOrDefault(x => x.Value.Date.Equals(dateTime.Date));
+        }
+
+        /// <summary>
+        /// Test if a DateTime is a holiday
+        /// </summary>
+        /// <param name="datetime">DateTime to test</param>
+        /// <returns></returns>
+        public bool OfDateTimeIsHoliday(DateTime datetime)
+        {
+            var ofDateTime = OfDateTime(datetime);
+            return !string.IsNullOrEmpty(ofDateTime.Key) && !ofDateTime.Value.Equals(DateTime.MinValue);
+        }
+
+        public bool OfDateTimeIsNotHoliday(DateTime datetime)
+        {
+            return !OfDateTimeIsHoliday(datetime);
+        }
+
         public static NationalHolidays From(string country) {
 
 #if NET45
