@@ -7,22 +7,35 @@ on:
   push:
     branches: [ "master" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "*" ]
+
+env:
+  DOTNET_VERSION: '3.1.x'
+  NUGET_VERSION: '5.3.x'  
 
 jobs:
   build:
-
+    
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.x
+        dotnet-version: ${{ env.DOTNET_VERSION}}
+    
+    - name: Install Nuget
+      uses: nuget/setup-nuget@v1
+      with:
+        nuget-version: ${{ env.NUGET_VERSION}}   
+
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore 
+      
     - name: Build
       run: dotnet build --no-restore
+    
     - name: Test
       run: dotnet test --no-build --verbosity normal
