@@ -10,7 +10,7 @@ namespace HolidaysTests {
         [TestCase("br", "ChristmasDay", "Natal")]
         [TestCase("br", "CorpusChristi", "Corpus Christi")]
         [TestCase("br", "GoodFriday", "Sexta-feira Santa")]
-        [TestCase("br", "Easter", "Páscoa")]
+        [TestCase("br", "Easter", "PÃ¡scoa")]
         public void WhenLocaleIsBrThenDescriptionsMustBeAsExpected(string country, string inputText, string expectedText)
         {
             var locale = Locale.LoadEmbeddedFor(typeof(ChristianHolidays), country);
@@ -22,7 +22,7 @@ namespace HolidaysTests {
         [TestCase("pt", "ChristmasDay", "Natal")]
         [TestCase("pt", "CorpusChristi", "Corpo de Deus")]
         [TestCase("pt", "GoodFriday", "Sexta-feira Santa")]
-        [TestCase("pt", "Easter", "Páscoa")]
+        [TestCase("pt", "Easter", "PÃ¡scoa")]
         public void WhenLocaleIsPtThenDescriptionsMustBeAsExpected(string country, string inputText, string expectedText)
         {
             var locale = Locale.LoadEmbeddedFor(typeof(ChristianHolidays), country);
