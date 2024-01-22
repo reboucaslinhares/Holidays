@@ -29,7 +29,7 @@ namespace Holidays {
                 }
             }
 
-            using (var jsonContentReader = new StreamReader(localizableTypeManifestStream, Encoding.UTF7))
+            using (var jsonContentReader = new StreamReader(localizableTypeManifestStream, Encoding.UTF8))
             {
                 var json = JObject.Parse(jsonContentReader.ReadToEnd());
                 localizableTypeManifestStream.Dispose();
