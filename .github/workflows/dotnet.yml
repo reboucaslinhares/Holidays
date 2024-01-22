@@ -32,10 +32,10 @@ jobs:
         nuget-version: ${{ env.NUGET_VERSION}}   
 
     - name: Restore dependencies
-      run: dotnet restore 
+      run: dotnet restore ./Holidays/Holidays.sln
       
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./Holidays/Holidays.sln --no-restore
     
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./Holidays/Holidays.sln --no-build --verbosity normal
