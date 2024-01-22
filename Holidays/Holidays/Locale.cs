@@ -17,7 +17,7 @@ namespace Holidays {
                 if (localizableType == null)
                     localizableType = new byte[0];
             }
-            json = JObject.Parse(Encoding.Default.GetString(localizableType));
+            json = JObject.Parse(Encoding.UTF8.GetString(localizableType));
         }
     }
 }
